@@ -1,0 +1,3 @@
+tview.o: tview.cc tview.h view.h model.h
+main.o: main.cc tview.h view.h model.h
+model.o: model.cc model.h view.h
