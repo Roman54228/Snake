@@ -131,7 +131,7 @@ void Tview::paint(const Rabbit& rabbit)
 {
     Coord c = rabbit.get_coord();
     draw_set_color("green");
-    draw_string(c.x, c.y, "*");
+    draw_string(c.x, c.y, "@");
 }
 
 void Tview::paint(const list<Rabbit>& rabbits)

@@ -62,4 +62,5 @@ private:
     Snake snake;
     void updatestate(Snake& s);
     void updatestate(list<Rabbit>& r);
+    list<Rabbit>::const_iterator find_rabbit(Coord coord);
 };

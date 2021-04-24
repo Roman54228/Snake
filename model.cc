@@ -2,6 +2,8 @@
 #include "view.h"
 #include <memory>
 #include <functional>
+#include <algorithm>
+#include <cmath>
 using namespace std::placeholders;
 Model::Model(View* myview)
 {
@@ -77,9 +79,28 @@ void Model::updatestate(Snake& s)
             view->paint(s.get_head(), "v", "green");
             break;
     }
+    /*if (find_rabbit(s.get_head()) == cend(get_rabbits()))
+    {
+	    view->clear(s.get_tail());
+    }*/
     view->clear(s.get_tail());
+
     s.erase_tail();
 }
+
+
+/*list<Rabbit>::const_iterator Model::find_rabbit(Coord coord)
+{
+	for (list<Rabbit>::const_iterator it = cbegin(get_rabbits()); it != cend(get_rabbits()); it++)
+	{
+		if ((*it).get_coord().x == coord.x && (*it).get_coord().y == coord.y)
+		{
+			return it;
+		}
+	}
+	return cend(get_rabbits());
+}*/
+
 
 void Model::updatestate(list<Rabbit>& rab)
 {
@@ -119,7 +140,7 @@ Coord Rabbit::get_coord() const
 Snake::Snake()
 {
     Coord c = {2, 2};
-    for (int j = 0; j < 5; ++j)
+    for (int j = 0; j <20; ++j)
     {
         body.push_back(c);
         c.x++;

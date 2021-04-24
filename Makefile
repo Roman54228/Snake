@@ -2,7 +2,7 @@ OBJ = tview.o main.o model.o human.o
 EXE = snake
 
 CC=g+++
-CFLAGS=-c -Wall
+CFLAGS=-c -Wall -g
 
 all: $(EXE) 
 
