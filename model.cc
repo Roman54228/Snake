@@ -24,7 +24,7 @@ Model::Model(View* myview)
 
 
     view->on_key(bind(&Model::key_pressed, this, _1));
-    view->on_timer(bind(&Model::tick, this, _1), 50);
+    view->on_timer(bind(&Model::tick, this, _1), 150);
 
     //snake = Snake(begin, 10);
 }
@@ -58,14 +58,20 @@ void Model::key_pressed(int key)
 
 void Model::updatestate(Snake& s)
 {
-    view->paint(s.get_head(), "x", "green");
-    s.push_cell(s.get_head());
+	view->paint(s.get_head(), "x", "green");
+	s.push_cell(s.get_head());
     switch (s.get_direct())
     {
         case LEFT:
-            s.inc_dec_head("inc", 'x');
+	    
+		s.inc_dec_head("inc", 'x');
+            	view->paint(s.get_head(), ">", "green");
+            	break;
+
+	    
+           /* s.inc_dec_head("inc", 'x');
             view->paint(s.get_head(), ">", "green");
-            break;
+            break;*/
         case RIGHT:
             s.inc_dec_head("dec", 'x');
             view->paint(s.get_head(), "<", "green");
@@ -93,7 +99,7 @@ void Model::updatestate(Snake& s)
 {
 	for (list<Rabbit>::const_iterator it = cbegin(get_rabbits()); it != cend(get_rabbits()); it++)
 	{
-		if ((*it).get_coord().x == coord.x && (*it).get_coord().y == coord.y)
+	if ((*it).get_coord().x == coord.x && (*it).get_coord().y == coord.y)
 		{
 			return it;
 		}
@@ -140,7 +146,7 @@ Coord Rabbit::get_coord() const
 Snake::Snake()
 {
     Coord c = {2, 2};
-    for (int j = 0; j <20; ++j)
+    for (int j = 0; j < 6; ++j)
     {
         body.push_back(c);
         c.x++;
