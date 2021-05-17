@@ -167,6 +167,7 @@ void Tview::paint(const Snake* snake)
             break;
     }
     draw_default_color();
+    draw_go_to(0,0);
 }
 
 void Tview::paint(const Coord& c, string obj, string color)
