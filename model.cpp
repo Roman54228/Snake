@@ -26,7 +26,7 @@ Model::Model(View* myview)
 	begin.x = col / 2;
 	begin.y = row / 2;
 	view->ontimer(bind(&Model::tick, this), 150);
-	snakes.push_back(Snake(begin, 1, 0));
+	snakes.push_back(Snake(begin, 2, 0));
 	//snakes.push_back(Snake({10,30}, 10, 0));
 }
 
